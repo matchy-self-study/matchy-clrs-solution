@@ -26,6 +26,7 @@ jobs:
         cargo install mdbook
 
     - name: Build the book
+      run: |
         mdbook build
 
     - name: GitHub Pages Deploy
