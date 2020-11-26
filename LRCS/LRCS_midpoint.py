@@ -23,29 +23,22 @@ def LCS(str1, str2):
             else:
                 dp[i, j] = max(dp[i, j-1], dp[i-1, j])
 
-    cand_former = []
-    cand_latter = []
-    i = n; j = n; k = 0; l = 0
-    while (i > n - j):
+    max_j = np.argmax(np.flipud(dp[1:,1:]).diagonal()) + 1
+
+    cand = []
+    i = n - max_j; j = max_j
+    while (i != 0 and j != 0):
         curr = dp[i, j]
         if curr == dp[i, j-1]: # "left"
-            try:
-                assert dp[k, l+1] == dp[k, l]
-            except:
-                "The path is not valid! left: {}"
-            l = l+1
             j = j-1
         elif curr == dp[i-1, j]: # "up"
-            k = k+1
             i = i-1
         elif curr - 1 == dp[i-1, j-1]: # "up-left", matched
-            cand_former.append(str2[k])
-            cand_latter.append(str1[i-1])
-            k = k+1; l = l+1
+            cand.append(str1[i-1])
             i = i-1; j = j-1
-    former = ''.join(cand_former)
-    latter = ''.join(cand_latter[::-1])
-    return former + latter
+    half = ''.join(cand[::-1])
+    return half + rev_comp(half)
+
 
 parser = argparse.ArgumentParser(description=(
     'Print the longest reverse complement sequence of the sequence in the input'
@@ -72,7 +65,6 @@ try:
 except:
     s = args.infile.strip()
 
-rev_s = rev(s)
 revcomp_s = rev_comp(s)
 
 longest_revcomp_subseq = LCS(s, revcomp_s)
