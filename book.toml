@@ -1,6 +1,7 @@
 [book]
-authors = ["matchy233"]
+authors = ["Mischa Matchy Volynskaya"]
+description = "Matchy's Solution Book to CLRS"
 language = "en"
 multilingual = false
 src = "src"
-title = "Matchy's Solution to CLRS"
+title = "Matchy's Solution Book to CLRS"
