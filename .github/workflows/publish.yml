@@ -16,14 +16,15 @@ jobs:
         ref: main
 
     - name: Setup Rust
-      uses: raftario/setup-rust-action@v1
+      uses: actions-rs/toolchain@v1
       with:
-        rust-channel: stable
-        rust-host: x86_64-unknown-linux-gnu
+        toolchain: stable
 
     - name: Install mdBook
-      run: |
-        cargo install mdbook
+      uses: actions-rs/cargo@v1
+      with:
+        command: install
+        args: mdbook
 
     - name: Build the book
       run: |
