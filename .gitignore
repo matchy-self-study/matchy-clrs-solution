@@ -19,3 +19,8 @@ Chapter1_Linear_Difference_Equation.ipynb
 
 # Homework/notes generated from existing .tex/.ipynb
 M*.pdf
+
+# test files
+*.txt
+*.fna
+*.out
