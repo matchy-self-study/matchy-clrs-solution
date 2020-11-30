@@ -14,7 +14,7 @@ def LCS(str1, str2):
     Computes the longest common subsequence of strings str1 and str2
     '''
     n = len(str1)
-    dp = np.zeros((n+1, n+1), dtype=int)
+    dp = np.zeros((n+1, n+1), dtype=np.int32)
 
     for i in range(1, n+1):
         for j in range(1, n+1):
@@ -70,7 +70,6 @@ revcomp_s = rev_comp(s)
 longest_revcomp_subseq = LCS(s, revcomp_s)
 
 n = len(longest_revcomp_subseq)
-print(n)
 first_half = longest_revcomp_subseq[:n//2]
 second_half = longest_revcomp_subseq[n//2:]
 
